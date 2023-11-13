@@ -29,5 +29,8 @@ y luego notifyAll
 en el bucle de producir pasa algo parecido:
 si hay un desbordamiento en la cantidad que produces también tendrá que queder en hibernación 
 
+este es el problema paradigmático del productor/consumidor porque hay muchas comprobaciones que hacer
+incluir un checkbox más que sea controlar producción(no se va a poder producir por encima de un máx) y controlar consumo(no vamos a poder bajar nunca de cero)
+e implementaremos diferentes regiones críticas, es decir crear más de un producto
 
 
