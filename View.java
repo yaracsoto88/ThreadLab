@@ -23,6 +23,15 @@ public class View extends JFrame implements  ActionListener,Runnable{
 
     JTextField consumersNumber;
 
+    JCheckBox timeProduceRandom;
+
+    JCheckBox timeConsumeRandom;
+
+    JSlider sliderProducer;
+
+    JSlider sliderConsumer;
+
+
     public View(Controller controller) {
         this.controller = controller;
 
@@ -36,6 +45,10 @@ public class View extends JFrame implements  ActionListener,Runnable{
         this.CustomerEndTime = new JTextField("0");
         this.productorsNumber=new JTextField("0");
         this.consumersNumber=new JTextField("0");
+        this.timeConsumeRandom=new JCheckBox();
+        this.timeProduceRandom=new JCheckBox();
+        this.sliderConsumer=new JSlider(0,1000,500);
+        this.sliderProducer=new JSlider(0,1000, 500);
 
         this.configureJFrame();
 
@@ -52,6 +65,9 @@ public class View extends JFrame implements  ActionListener,Runnable{
         JLabel lCustomerEndTime =new JLabel("Customer end time : ");
         JLabel lProductorNumber=new JLabel("Productors number");
         JLabel lConsumerNumber=new JLabel("Consumers number");
+        JLabel ltimeConsumeRandom=new JLabel("Tiempo consumidor aleatorio");
+        JLabel ltimeProduceRandom=new JLabel("Tiempo productor aleatorio");
+
 
         c.anchor = GridBagConstraints.NORTHWEST;
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -98,7 +114,21 @@ public class View extends JFrame implements  ActionListener,Runnable{
         panel.add(lConsumerNumber, c);
         c.gridx++;
         panel.add(consumersNumber,c);
-
+        c.gridx=1;
+        c.gridy++;
+        panel.add(ltimeConsumeRandom, c);
+        c.gridx++;
+        panel.add(timeConsumeRandom,c);
+        c.gridy++;
+        panel.add(sliderConsumer, c);
+        c.gridx=1;
+        c.gridy++;
+        panel.add(ltimeProduceRandom, c);
+        c.gridx++;
+        panel.add(timeProduceRandom,c);
+        c.gridy++;
+        panel.add(sliderProducer, c);
+    
 
         }
 
