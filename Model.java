@@ -5,9 +5,9 @@ public class Model {
         counter = new Counter();
     }
 
-    public  void play(){
-        Thread []  customersThreads = new Thread[400];
-        Thread []  producersThreads = new Thread[200];
+    public  void play(int productorsNumber, int consumidorsNumber){
+        Thread []  customersThreads = new Thread[consumidorsNumber];
+        Thread []  producersThreads = new Thread[productorsNumber];
 
         for (int i = 0; i < customersThreads.length; i++) {
             customersThreads[i] = new Thread(new Customer(counter));
