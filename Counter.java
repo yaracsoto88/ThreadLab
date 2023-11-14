@@ -5,6 +5,8 @@ public class Counter {
     private long ProducerEndTime;
     private  long CustomerStartTime;
     private long CustomerEndTime;
+    private long threadProducer;
+    private long threadConsumer;
 
     public Counter() {
         this.count = 0;
@@ -70,5 +72,21 @@ public class Counter {
 
     public void setCustomerStartTime(long customerStartTime) {
         CustomerStartTime = customerStartTime;
+    }
+
+    public long getThreadProducer() {
+        return this.threadProducer;
+    }
+
+    public void setThreadProducer(long threadProducer) {
+        this.threadProducer = threadProducer;
+    }
+
+    public long getThreadConsumer() {
+        return this.threadConsumer;
+    }
+
+    public void setThreadConsumer(long threadConsumer) {
+        this.threadConsumer = threadConsumer;
     }
 }
