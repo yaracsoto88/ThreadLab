@@ -7,6 +7,8 @@ public class Counter {
     private long CustomerEndTime;
     private long threadTime;
     private long AvgThreadCreacion;
+    private long startTime;
+    private long avgStart;
 
 
     public Counter() {
@@ -91,5 +93,22 @@ public class Counter {
     public void setAvgThreadCreacion(long AvgThreadCreacion) {
         this.AvgThreadCreacion = AvgThreadCreacion;
     }
+
+    public long getStartTime() {
+        return this.startTime;
+    }
+
+    public void setStartTime(long startTime) {
+        this.startTime = startTime;
+    }
+
+    public long getAvgStart() {
+        return this.avgStart;
+    }
+
+    public void setAvgStart(long avgStart) {
+        this.avgStart = avgStart;
+    }
+
 
 }

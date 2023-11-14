@@ -35,6 +35,10 @@ public class View extends JFrame implements  ActionListener,Runnable{
 
     JTextField mediaCreacionHilos;
 
+    JTextField sumaStart;
+
+    JTextField mediaStart;
+
 
     public View(Controller controller) {
         this.controller = controller;
@@ -56,6 +60,10 @@ public class View extends JFrame implements  ActionListener,Runnable{
 
         this.sumaTotalCreacionHilos=new JTextField("0");
         this.mediaCreacionHilos=new JTextField("0");
+
+        this.sumaStart=new JTextField("0");
+        this.mediaStart=new JTextField("0");
+
 
         this.configureJFrame();
 
@@ -79,6 +87,8 @@ public class View extends JFrame implements  ActionListener,Runnable{
 
         JLabel lMediaCreacion=new JLabel ("Media creación hilos");
 
+        JLabel lSumaStart=new JLabel("Tiempo total del start");
+        JLabel lmediaStart=new JLabel("Media del tiempo del start");
 
         c.anchor = GridBagConstraints.NORTHWEST;
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -151,6 +161,18 @@ public class View extends JFrame implements  ActionListener,Runnable{
         panel.add(lMediaCreacion, c);
         c.gridx++;
         panel.add(mediaCreacionHilos,c);
+
+        c.gridx=1;
+        c.gridy++;
+        panel.add(lSumaStart, c);
+        c.gridx++;
+        panel.add(sumaStart,c);
+
+        c.gridx=1;
+        c.gridy++;
+        panel.add(lmediaStart, c);
+        c.gridx++;
+        panel.add(mediaStart,c);
     
 
         }
@@ -174,6 +196,8 @@ public class View extends JFrame implements  ActionListener,Runnable{
                 this.getCustomerEndTime().setText(String.valueOf(controller.model.getCounter().getCustomerEndTime()));
                 this.getSumaTotalCreacionHilos().setText(String.valueOf(controller.model.getCounter().getThreadTime()));
                 this.getMediaCreacionHilos().setText(String.valueOf(controller.model.getCounter().getAvgThreadCreacion()));
+                this.getSumaStart().setText(String.valueOf(controller.model.getCounter().getStartTime()));
+                this.getMediaStart().setText(String.valueOf(controller.model.getCounter().getAvgStart()));
             }catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -327,5 +351,22 @@ public class View extends JFrame implements  ActionListener,Runnable{
     public void setMediaCreacionHilos(JTextField mediaCreacionHilos) {
         this.mediaCreacionHilos = mediaCreacionHilos;
     }
+
+    public JTextField getSumaStart() {
+        return this.sumaStart;
+    }
+
+    public void setSumaStart(JTextField sumaStart) {
+        this.sumaStart = sumaStart;
+    }
+
+    public JTextField getMediaStart() {
+        return this.mediaStart;
+    }
+
+    public void setMediaStart(JTextField mediaStart) {
+        this.mediaStart = mediaStart;
+    }
+
 
 }

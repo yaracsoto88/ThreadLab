@@ -16,7 +16,12 @@ public class Model {
             timeThreadC=System.currentTimeMillis()-timeThreadC;
             this.counter.setThreadTime(timeThreadC+this.counter.getThreadTime());
         
+            long duracionStart=System.currentTimeMillis();
             customersThreads[i].start();
+            duracionStart=System.currentTimeMillis()-duracionStart;
+            this.counter.setStartTime(duracionStart+this.counter.getStartTime());
+
+
 
         }
 
@@ -26,10 +31,15 @@ public class Model {
             timeThreadP=System.currentTimeMillis()-timeThreadP;
             this.counter.setThreadTime(timeThreadP+this.counter.getThreadTime());
             
+
+            long duracionStart=System.currentTimeMillis();
             producersThreads[i].start();
+            duracionStart=System.currentTimeMillis()-duracionStart;
+            this.counter.setStartTime(duracionStart+this.counter.getStartTime());
         }
 
         this.counter.setAvgThreadCreacion(this.counter.getThreadTime()/(long)(consumidors+productors));
+        this.counter.setAvgStart(this.counter.getStartTime()/(long)(consumidors+productors));
 
 //        try {
 //            for( Thread hilo:customersThreads){
