@@ -5,8 +5,9 @@ public class Counter {
     private long ProducerEndTime;
     private  long CustomerStartTime;
     private long CustomerEndTime;
-    private long threadProducer;
-    private long threadConsumer;
+    private long threadTime;
+    private long AvgThreadCreacion;
+
 
     public Counter() {
         this.count = 0;
@@ -74,19 +75,21 @@ public class Counter {
         CustomerStartTime = customerStartTime;
     }
 
-    public long getThreadProducer() {
-        return this.threadProducer;
+
+    public long getThreadTime() {
+        return this.threadTime;
     }
 
-    public void setThreadProducer(long threadProducer) {
-        this.threadProducer = threadProducer;
+    public void setThreadTime(long threadTime) {
+        this.threadTime = threadTime;
     }
 
-    public long getThreadConsumer() {
-        return this.threadConsumer;
+    public long getAvgThreadCreacion() {
+        return this.AvgThreadCreacion;
     }
 
-    public void setThreadConsumer(long threadConsumer) {
-        this.threadConsumer = threadConsumer;
+    public void setAvgThreadCreacion(long AvgThreadCreacion) {
+        this.AvgThreadCreacion = AvgThreadCreacion;
     }
+
 }

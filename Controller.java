@@ -15,8 +15,8 @@ public class Controller {
         this.model.counter.setProducerEndTime(0);
         this.model.counter.setCustomerStartTime(0);
         this.model.counter.setCustomerEndTime(0);
-        this.model.counter.setThreadConsumer(0);
-        this.model.counter.setThreadProducer(0);
+        this.model.counter.setThreadTime(0);
+        this.model.counter.setAvgThreadCreacion(0);
 
         this.model.play(productors, sliderProductor, producerRandom, consumidors, sliderConsumidor, consumerRandom);
     }

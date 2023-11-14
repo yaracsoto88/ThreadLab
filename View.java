@@ -31,6 +31,10 @@ public class View extends JFrame implements  ActionListener,Runnable{
 
     JSlider sliderConsumer;
 
+    JTextField sumaTotalCreacionHilos;
+
+    JTextField mediaCreacionHilos;
+
 
     public View(Controller controller) {
         this.controller = controller;
@@ -50,6 +54,9 @@ public class View extends JFrame implements  ActionListener,Runnable{
         this.sliderConsumer=new JSlider(0,1000,500);
         this.sliderProducer=new JSlider(0,1000, 500);
 
+        this.sumaTotalCreacionHilos=new JTextField("0");
+        this.mediaCreacionHilos=new JTextField("0");
+
         this.configureJFrame();
 
         this.setVisible(true);
@@ -67,6 +74,10 @@ public class View extends JFrame implements  ActionListener,Runnable{
         JLabel lConsumerNumber=new JLabel("Consumers number");
         JLabel ltimeConsumeRandom=new JLabel("Tiempo consumidor aleatorio");
         JLabel ltimeProduceRandom=new JLabel("Tiempo productor aleatorio");
+
+        JLabel lSumaCreacion=new JLabel("Tiempo total creacion hilos");
+
+        JLabel lMediaCreacion=new JLabel ("Media creación hilos");
 
 
         c.anchor = GridBagConstraints.NORTHWEST;
@@ -128,6 +139,18 @@ public class View extends JFrame implements  ActionListener,Runnable{
         panel.add(timeProduceRandom,c);
         c.gridx++;
         panel.add(sliderProducer, c);
+
+        c.gridx=1;
+        c.gridy++;
+        panel.add(lSumaCreacion, c);
+        c.gridx++;
+        panel.add(sumaTotalCreacionHilos,c);
+
+        c.gridx=1;
+        c.gridy++;
+        panel.add(lMediaCreacion, c);
+        c.gridx++;
+        panel.add(mediaCreacionHilos,c);
     
 
         }
@@ -149,6 +172,8 @@ public class View extends JFrame implements  ActionListener,Runnable{
                 this.getProducerEndTime().setText(String.valueOf(controller.model.getCounter().getProducerEndTime()));
                 
                 this.getCustomerEndTime().setText(String.valueOf(controller.model.getCounter().getCustomerEndTime()));
+                this.getSumaTotalCreacionHilos().setText(String.valueOf(controller.model.getCounter().getThreadTime()));
+                this.getMediaCreacionHilos().setText(String.valueOf(controller.model.getCounter().getAvgThreadCreacion()));
             }catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -202,4 +227,105 @@ public class View extends JFrame implements  ActionListener,Runnable{
     public JTextField getCustomerEndTime() {
         return CustomerEndTime;
     }
+
+    public JButton getStartButton() {
+        return this.startButton;
+    }
+
+    public void setStartButton(JButton startButton) {
+        this.startButton = startButton;
+    }
+
+    public JTextField getCounter() {
+        return this.counter;
+    }
+
+    public void setCounter(JTextField counter) {
+        this.counter = counter;
+    }
+    public void setProducerStartTime(JTextField ProducerStartTime) {
+        this.ProducerStartTime = ProducerStartTime;
+    }
+    public void setCustomerStartTime(JTextField CustomerStartTime) {
+        this.CustomerStartTime = CustomerStartTime;
+    }
+    public void setProducerEndTime(JTextField ProducerEndTime) {
+        this.ProducerEndTime = ProducerEndTime;
+    }
+    public void setCustomerEndTime(JTextField CustomerEndTime) {
+        this.CustomerEndTime = CustomerEndTime;
+    }
+
+    public Controller getController() {
+        return this.controller;
+    }
+
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
+
+    public JTextField getProductorsNumber() {
+        return this.productorsNumber;
+    }
+
+    public void setProductorsNumber(JTextField productorsNumber) {
+        this.productorsNumber = productorsNumber;
+    }
+
+    public JTextField getConsumersNumber() {
+        return this.consumersNumber;
+    }
+
+    public void setConsumersNumber(JTextField consumersNumber) {
+        this.consumersNumber = consumersNumber;
+    }
+
+    public JCheckBox getTimeProduceRandom() {
+        return this.timeProduceRandom;
+    }
+
+    public void setTimeProduceRandom(JCheckBox timeProduceRandom) {
+        this.timeProduceRandom = timeProduceRandom;
+    }
+
+    public JCheckBox getTimeConsumeRandom() {
+        return this.timeConsumeRandom;
+    }
+
+    public void setTimeConsumeRandom(JCheckBox timeConsumeRandom) {
+        this.timeConsumeRandom = timeConsumeRandom;
+    }
+
+    public JSlider getSliderProducer() {
+        return this.sliderProducer;
+    }
+
+    public void setSliderProducer(JSlider sliderProducer) {
+        this.sliderProducer = sliderProducer;
+    }
+
+    public JSlider getSliderConsumer() {
+        return this.sliderConsumer;
+    }
+
+    public void setSliderConsumer(JSlider sliderConsumer) {
+        this.sliderConsumer = sliderConsumer;
+    }
+
+    public JTextField getSumaTotalCreacionHilos() {
+        return this.sumaTotalCreacionHilos;
+    }
+
+    public void setSumaTotalCreacionHilos(JTextField sumaTotalCreacionHilos) {
+        this.sumaTotalCreacionHilos = sumaTotalCreacionHilos;
+    }
+
+    public JTextField getMediaCreacionHilos() {
+        return this.mediaCreacionHilos;
+    }
+
+    public void setMediaCreacionHilos(JTextField mediaCreacionHilos) {
+        this.mediaCreacionHilos = mediaCreacionHilos;
+    }
+
 }
