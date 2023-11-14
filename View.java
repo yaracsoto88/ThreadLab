@@ -119,14 +119,14 @@ public class View extends JFrame implements  ActionListener,Runnable{
         panel.add(ltimeConsumeRandom, c);
         c.gridx++;
         panel.add(timeConsumeRandom,c);
-        c.gridy++;
+        c.gridx++;
         panel.add(sliderConsumer, c);
         c.gridx=1;
         c.gridy++;
         panel.add(ltimeProduceRandom, c);
         c.gridx++;
         panel.add(timeProduceRandom,c);
-        c.gridy++;
+        c.gridx++;
         panel.add(sliderProducer, c);
     
 
@@ -169,8 +169,12 @@ public class View extends JFrame implements  ActionListener,Runnable{
                 this.getCustomerEndTime().setText("0");
                 int productors=Integer.parseInt(productorsNumber.getText());
                 int consumidors=Integer.parseInt(consumersNumber.getText());
+                int sliderConsumidor=sliderConsumer.getValue();
+                int sliderProductor=sliderProducer.getValue();
+                boolean consumerRandom=timeConsumeRandom.isSelected();
+                boolean producerRandom=timeProduceRandom.isSelected();
+                controller.play(productors, sliderProductor, producerRandom, consumidors, sliderConsumidor, consumerRandom);
 
-                controller.play(productors, consumidors);
                 break;
             default:
                 System.err.println("Acción NO tratada: " + e);

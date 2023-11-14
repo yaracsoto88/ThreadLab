@@ -8,7 +8,7 @@ public class Controller {
         this.model = new Model();
         this.view = new View(this);
     }
-    public void play(int productors, int consumidors){
+    public void play(int productors, int sliderProductor,boolean producerRandom, int consumidors, int sliderConsumidor, boolean consumerRandom){
 
         this.model.counter.setCount(0);
         this.model.counter.setProducerStartTime(0);
@@ -17,7 +17,7 @@ public class Controller {
         this.model.counter.setCustomerEndTime(0);
         
 
-        this.model.play(productors, consumidors);
+        this.model.play(productors, sliderProductor, producerRandom, consumidors, sliderConsumidor, consumerRandom);
     }
 
     public View getView() {
