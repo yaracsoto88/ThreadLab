@@ -38,8 +38,8 @@ public class Model {
             this.counter.setStartTime(duracionStart+this.counter.getStartTime());
         }
 
-        this.counter.setAvgThreadCreacion(this.counter.getThreadTime()/(long)(consumidors+productors));
-        this.counter.setAvgStart(this.counter.getStartTime()/(long)(consumidors+productors));
+        this.counter.setAvgThreadCreacion(this.counter.getThreadTime()/(float)(consumidors+productors));
+        this.counter.setAvgStart(this.counter.getStartTime()/(float)(consumidors+productors));
 
 //        try {
 //            for( Thread hilo:customersThreads){
