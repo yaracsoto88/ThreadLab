@@ -1,4 +1,5 @@
-public class Counter {
+package Model;
+public class ProtectedCounter {
     private int count;
 
     private long ProducerStartTime;
@@ -11,7 +12,7 @@ public class Counter {
     private float avgStart;
 
 
-    public Counter() {
+    public ProtectedCounter() {
         this.count = 0;
     }
 

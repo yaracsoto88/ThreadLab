@@ -1,18 +1,19 @@
+package Model;
 import java.util.Random;
 
 public class Producer implements Runnable {
-    Counter counter;
+    ProtectedCounter counter;
     Long startTime;
     Long endTime;
     boolean random;
     int sleepTime;
-    public Producer(Counter counter,boolean random, int sleepTime ) {
+    public Producer(ProtectedCounter counter,boolean random, int sleepTime ) {
         this.setCounter(counter);
         this.random=random;
         this.sleepTime=sleepTime;
     }
 
-    public void setCounter(Counter counter) {
+    public void setCounter(ProtectedCounter counter) {
         this.counter = counter;
     }
 

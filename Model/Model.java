@@ -1,8 +1,11 @@
+
+
+package Model;
 public class Model {
-    Counter counter;
+    public ProtectedCounter counter;
 
     public  Model (){
-        counter = new Counter();
+        counter = new ProtectedCounter();
     }
 
     public  void play( int productors, int sliderProductor,boolean producerRandom, int consumidors, int sliderConsumidor, boolean consumerRandom){
@@ -54,7 +57,7 @@ public class Model {
 //        } catch (Exception e) {}
     }
 
-    public Counter getCounter() {
+    public ProtectedCounter getCounter() {
         return counter;
     }
 
