@@ -1,7 +1,7 @@
 package View;
 import javax.swing.*;
 
-import Controller.Controller;
+import Controller.TJTLController;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -20,7 +20,7 @@ public class View extends JFrame implements  ActionListener,Runnable{
 
     JTextField CustomerEndTime;
 
-    Controller controller;
+    TJTLController controller;
 
     JTextField productorsNumber;
 
@@ -43,7 +43,7 @@ public class View extends JFrame implements  ActionListener,Runnable{
     JTextField mediaStart;
 
 
-    public View(Controller controller) {
+    public View(TJTLController controller) {
         this.controller = controller;
 
         this.startButton = new JButton("Play");
@@ -283,11 +283,11 @@ public class View extends JFrame implements  ActionListener,Runnable{
         this.CustomerEndTime = CustomerEndTime;
     }
 
-    public Controller getController() {
+    public TJTLController getController() {
         return this.controller;
     }
 
-    public void setController(Controller controller) {
+    public void setController(TJTLController controller) {
         this.controller = controller;
     }
 

@@ -1,10 +1,10 @@
 
 
 package Model;
-public class Model {
+public class TJTLModel {
     public ProtectedCounter counter;
 
-    public  Model (){
+    public  TJTLModel (){
         counter = new ProtectedCounter();
     }
 

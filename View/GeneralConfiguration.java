@@ -79,4 +79,53 @@ public class GeneralConfiguration extends JPanel {
         this.add(this.sliderProducer, c);
 
     }
+
+    public JTextField getProductorsNumber() {
+        return this.productorsNumber;
+    }
+
+    public void setProductorsNumber(JTextField productorsNumber) {
+        this.productorsNumber = productorsNumber;
+    }
+
+    public JTextField getConsumersNumber() {
+        return this.consumersNumber;
+    }
+
+    public void setConsumersNumber(JTextField consumersNumber) {
+        this.consumersNumber = consumersNumber;
+    }
+
+    public JCheckBox getTimeProduceRandom() {
+        return this.timeProduceRandom;
+    }
+
+    public void setTimeProduceRandom(JCheckBox timeProduceRandom) {
+        this.timeProduceRandom = timeProduceRandom;
+    }
+
+    public JCheckBox getTimeConsumeRandom() {
+        return this.timeConsumeRandom;
+    }
+
+    public void setTimeConsumeRandom(JCheckBox timeConsumeRandom) {
+        this.timeConsumeRandom = timeConsumeRandom;
+    }
+
+    public JSlider getSliderProducer() {
+        return this.sliderProducer;
+    }
+
+    public void setSliderProducer(JSlider sliderProducer) {
+        this.sliderProducer = sliderProducer;
+    }
+
+    public JSlider getSliderConsumer() {
+        return this.sliderConsumer;
+    }
+
+    public void setSliderConsumer(JSlider sliderConsumer) {
+        this.sliderConsumer = sliderConsumer;
+    }
+
 }
