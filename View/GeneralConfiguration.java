@@ -1,0 +1,82 @@
+package View;
+
+import java.awt.GridBagConstraints;
+
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+
+public class GeneralConfiguration extends JPanel {
+    JTextField productorsNumber;
+
+    JTextField consumersNumber;
+
+    JCheckBox timeProduceRandom;
+
+    JCheckBox timeConsumeRandom;
+
+    JSlider sliderProducer;
+
+    JSlider sliderConsumer;
+
+    public GeneralConfiguration() {
+        productorsNumber = new JTextField("0");
+        consumersNumber = new JTextField("0");
+        timeProduceRandom = new JCheckBox();
+        timeConsumeRandom = new JCheckBox();
+        sliderProducer = new JSlider(0, 1000, 500);
+        sliderConsumer = new JSlider(0, 1000, 500);
+
+        addComponentsToPane();
+    }
+
+    private void addComponentsToPane() {
+        GridBagConstraints c = new GridBagConstraints();
+        JLabel lProductorNumber = new JLabel("Productors number");
+        JLabel lConsumerNumber = new JLabel("Consumers number");
+        JLabel ltimeConsumeRandom = new JLabel("Tiempo consumidor aleatorio");
+        JLabel ltimeProduceRandom = new JLabel("Tiempo productor aleatorio");
+
+        c.anchor = GridBagConstraints.NORTHWEST;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 1;
+        c.gridy = 0;
+        c.weightx = 1;
+        c.weighty = 1;
+        c.gridheight = 1;
+        c.gridwidth = 1;
+
+        this.add(lProductorNumber, c);
+        c.gridx++;
+        this.add(this.productorsNumber, c);
+        c.gridx = 1;
+        c.gridy++;
+        this.add(lConsumerNumber, c);
+        c.gridx = 1;
+        c.gridy++;
+        this.add(this.consumersNumber, c);
+        c.gridx = 1;
+        c.gridy++;
+        this.add(ltimeConsumeRandom, c);
+        c.gridx = 1;
+        c.gridy++;
+        this.add(this.timeConsumeRandom, c);
+        c.gridx = 1;
+        c.gridy++;
+        this.add(ltimeProduceRandom, c);
+        c.gridx = 1;
+        c.gridy++;
+        this.add(this.timeProduceRandom, c);
+
+        c.gridx = 1;
+        c.gridy++;
+        this.add(this.sliderConsumer, c);
+
+        c.gridx = 1;
+        c.gridy++;
+        this.add(this.sliderProducer, c);
+
+    }
+}
