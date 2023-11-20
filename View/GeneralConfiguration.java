@@ -1,14 +1,17 @@
 package View;
 
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
+import javax.swing.BorderFactory;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 public class GeneralConfiguration extends JPanel {
     JTextField productorsNumber;
@@ -23,6 +26,10 @@ public class GeneralConfiguration extends JPanel {
 
     JSlider sliderConsumer;
 
+    JTextField quantityItemPerConsumer;
+
+    JTextField quantityItemPerProducer;
+
     public GeneralConfiguration() {
         productorsNumber = new JTextField("0");
         consumersNumber = new JTextField("0");
@@ -30,22 +37,30 @@ public class GeneralConfiguration extends JPanel {
         timeConsumeRandom = new JCheckBox();
         sliderProducer = new JSlider(0, 1000, 500);
         sliderConsumer = new JSlider(0, 1000, 500);
+        quantityItemPerConsumer = new JTextField("0");
+        quantityItemPerProducer = new JTextField("0");  
         this.setLayout(new GridBagLayout());
         addComponentsToPane();
+
+        Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
+        this.setBorder(BorderFactory.createTitledBorder(border, "General Configuration "));
     }
 
     private void addComponentsToPane() {
         GridBagConstraints c = new GridBagConstraints();
-        JLabel lProductorNumber = new JLabel("Productors number");
-        JLabel lConsumerNumber = new JLabel("Consumers number");
+        JLabel lProductorNumber = new JLabel("Numero de productores");
+        JLabel lConsumerNumber = new JLabel("Numero de consumidores");
         JLabel ltimeConsumeRandom = new JLabel("Tiempo consumidor aleatorio");
         JLabel ltimeProduceRandom = new JLabel("Tiempo productor aleatorio");
-        JLabel lSliderProducer=new JLabel("Slider Producer");
-        JLabel lSliderConsumer=new JLabel("Slider Consumer");
+        JLabel lSliderProducer=new JLabel("Slider de Productor");
+        JLabel lSliderConsumer=new JLabel("Slider de Consumidor");
+        JLabel lQuantityItemPerConsumer=new JLabel("Cantidad de items a consumir por consumidor");
+        JLabel lQuantityItemPerProducer=new JLabel("Cantidad de items a producir por productor");
 
         c.anchor = GridBagConstraints.NORTHWEST;
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.insets=new Insets(7, 30, 7, 7);       c.gridx = 0;
+        c.insets=new Insets(4, 30, 4, 4);       
+        c.gridx = 0;
         c.gridy = 0;
         c.weightx = 1;
         c.weighty = 1;
@@ -79,14 +94,26 @@ public class GeneralConfiguration extends JPanel {
         c.gridy++;
         this.add(lSliderConsumer, c);
         c.gridx = 1;
-        
         this.add(this.sliderConsumer, c);
-         c.gridx = 0;
+
+        c.gridx = 0;
         c.gridy++;
         this.add(lSliderProducer, c);
         c.gridx = 1;
-        
         this.add(this.sliderProducer, c);
+
+        c.gridx = 0;
+        c.gridy++;
+        this.add(lQuantityItemPerConsumer, c);
+        c.gridx = 1;
+        this.add(this.quantityItemPerConsumer, c);
+
+        c.gridx = 0;
+        c.gridy++;
+        this.add(lQuantityItemPerProducer, c);
+        c.gridx = 1;
+        this.add(this.quantityItemPerProducer, c);
+
     }
 
     public JTextField getProductorsNumber() {
@@ -136,5 +163,22 @@ public class GeneralConfiguration extends JPanel {
     public void setSliderConsumer(JSlider sliderConsumer) {
         this.sliderConsumer = sliderConsumer;
     }
+
+    public JTextField getQuantityItemPerConsumer() {
+        return this.quantityItemPerConsumer;
+    }
+
+    public void setQuantityItemPerConsumer(JTextField quantityItemPerConsumer) {
+        this.quantityItemPerConsumer = quantityItemPerConsumer;
+    }
+
+    public JTextField getQuantityItemPerProducer() {
+        return this.quantityItemPerProducer;
+    }
+
+    public void setQuantityItemPerProducer(JTextField quantityItemPerProducer) {
+        this.quantityItemPerProducer = quantityItemPerProducer;
+    }
+
 
 }
