@@ -5,7 +5,6 @@ import DTO.LabResults;
 import Model.TJTLModel;
 import View.TJTLVista;
 
-
 public class TJTLController {
 
     public TJTLModel model;
@@ -14,23 +13,14 @@ public class TJTLController {
     LabResults labResults;
 
     public TJTLController() {
-        this.model = new TJTLModel();
+        this.model = new TJTLModel(labParameters, labResults);
         this.tjtlVista = new TJTLVista(this.labParameters, this.labResults, this);
 
     }
 
-    public void play(int productors, int sliderProductor, boolean producerRandom, int consumidors, int sliderConsumidor,
-            boolean consumerRandom) {
+    public void play() {
 
-        this.model.counter.setCount(0);
-        this.model.counter.setProducerStartTime(0);
-        this.model.counter.setProducerEndTime(0);
-        this.model.counter.setCustomerStartTime(0);
-        this.model.counter.setCustomerEndTime(0);
-        this.model.counter.setThreadTime(0);
-        this.model.counter.setAvgThreadCreacion(0);
-
-        this.model.play(productors, sliderProductor, producerRandom, consumidors, sliderConsumidor, consumerRandom);
+        this.model.play();
     }
 
     public TJTLVista getView() {

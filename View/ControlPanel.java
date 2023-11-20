@@ -29,7 +29,8 @@ public class ControlPanel extends JPanel {
 
         c.anchor = GridBagConstraints.NORTHWEST;
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 1;
+        c.insets=new Insets(7, 30, 7, 0); 
+        c.gridx = 0;
         c.gridy = 0;
         c.weightx = 1;
         c.weighty = 1;
@@ -39,17 +40,18 @@ public class ControlPanel extends JPanel {
         this.add(lbuttonPlaypause, c);
         c.gridx++;
         this.add(this.playPause, c);
-        c.gridx = 1;
         c.gridy++;
+       
+        c.gridx=0;
         this.add(lProtectCriticalRegions, c);
-        c.gridx = 1;
-        c.gridy++;
+        
+        c.gridx++;
         this.add(this.protectCriticalRegions, c);
-        c.gridx = 1;
         c.gridy++;
+        c.gridx=0;
         this.add(lPreventNegativeStocks, c);
-        c.gridx = 1;
-        c.gridy++;
+        
+        c.gridx++;
         this.add(this.preventNegativeStocks, c);
 
     }

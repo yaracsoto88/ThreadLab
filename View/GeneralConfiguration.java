@@ -1,6 +1,8 @@
 package View;
 
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
@@ -28,7 +30,7 @@ public class GeneralConfiguration extends JPanel {
         timeConsumeRandom = new JCheckBox();
         sliderProducer = new JSlider(0, 1000, 500);
         sliderConsumer = new JSlider(0, 1000, 500);
-
+        this.setLayout(new GridBagLayout());
         addComponentsToPane();
     }
 
@@ -38,10 +40,12 @@ public class GeneralConfiguration extends JPanel {
         JLabel lConsumerNumber = new JLabel("Consumers number");
         JLabel ltimeConsumeRandom = new JLabel("Tiempo consumidor aleatorio");
         JLabel ltimeProduceRandom = new JLabel("Tiempo productor aleatorio");
+        JLabel lSliderProducer=new JLabel("Slider Producer");
+        JLabel lSliderConsumer=new JLabel("Slider Consumer");
 
         c.anchor = GridBagConstraints.NORTHWEST;
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 1;
+        c.insets=new Insets(7, 30, 7, 7);       c.gridx = 0;
         c.gridy = 0;
         c.weightx = 1;
         c.weighty = 1;
@@ -51,33 +55,38 @@ public class GeneralConfiguration extends JPanel {
         this.add(lProductorNumber, c);
         c.gridx++;
         this.add(this.productorsNumber, c);
-        c.gridx = 1;
-        c.gridy++;
+       c.gridx = 0;
+       c.gridy++;
+   
         this.add(lConsumerNumber, c);
         c.gridx = 1;
-        c.gridy++;
+     
         this.add(this.consumersNumber, c);
-        c.gridx = 1;
+        c.gridx = 0;
         c.gridy++;
         this.add(ltimeConsumeRandom, c);
         c.gridx = 1;
-        c.gridy++;
+    
         this.add(this.timeConsumeRandom, c);
-        c.gridx = 1;
+        c.gridx = 0;
         c.gridy++;
+
         this.add(ltimeProduceRandom, c);
         c.gridx = 1;
-        c.gridy++;
         this.add(this.timeProduceRandom, c);
 
-        c.gridx = 1;
+        c.gridx = 0;
         c.gridy++;
+        this.add(lSliderConsumer, c);
+        c.gridx = 1;
+        
         this.add(this.sliderConsumer, c);
-
-        c.gridx = 1;
+         c.gridx = 0;
         c.gridy++;
+        this.add(lSliderProducer, c);
+        c.gridx = 1;
+        
         this.add(this.sliderProducer, c);
-
     }
 
     public JTextField getProductorsNumber() {

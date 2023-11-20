@@ -1,13 +1,16 @@
 package View;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.http.WebSocket.Listener;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -44,9 +47,23 @@ public class TJTLVista extends JFrame implements ActionListener, ChangeListener,
 
     private void addComponentsToPane(Container panel) {
         GridBagConstraints c=new GridBagConstraints();
+
+        JLabel lControlPanel=new JLabel("Control Panel");
+        lControlPanel.setOpaque(true);
+        lControlPanel.setBackground(new Color(240,211,165));
+
+        JLabel lGeneralConfiguration=new JLabel("General Configuration");
+        lGeneralConfiguration.setOpaque(true);
+        lGeneralConfiguration.setBackground(new Color(240,211,165));
+
+        JLabel lResultsViewer=new JLabel("Results Viewer");
+        lResultsViewer.setOpaque(true);
+        lResultsViewer.setBackground(new Color(240,211,165));
+
         
         c.anchor = GridBagConstraints.NORTHWEST;
         c.fill = GridBagConstraints.HORIZONTAL;
+        c.insets=new Insets(2, 0, 0, 0); 
         c.gridx = 0;
         c.gridy = 0;
         c.weightx = 1;
@@ -54,9 +71,19 @@ public class TJTLVista extends JFrame implements ActionListener, ChangeListener,
         c.gridheight = 1;
         c.gridwidth = 1;
 
+        panel.add(lControlPanel,c);
+        c.gridy++;
         panel.add(controlPanel,c);
         c.gridy++;
+        c.gridx=0;
+
+        panel.add(lGeneralConfiguration,c);
+        c.gridy++;
         panel.add(generalConfiguration,c);
+        c.gridy++;
+        c.gridx=0;
+
+        panel.add(lResultsViewer,c);
         c.gridy++;
         panel.add(resultsViewer,c);
 
@@ -66,7 +93,7 @@ public class TJTLVista extends JFrame implements ActionListener, ChangeListener,
     @Override
     public void run() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'run'");
+       
     }
 
     @Override

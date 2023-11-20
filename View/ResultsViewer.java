@@ -52,11 +52,11 @@ public class ResultsViewer extends JPanel implements Runnable {
 
     private void addComponentsToPane(){
         GridBagConstraints c=new GridBagConstraints();
-        JLabel lCounter = new JLabel("Valor del contador: ");
-        JLabel lProducerStarTime =new JLabel("Producer start time : ");
-        JLabel lProducerEndTime =new JLabel("Producer end time : ");
-        JLabel lCustomerStarTime =new JLabel("Customer start time : ");
-        JLabel lCustomerEndTime =new JLabel("Customer end time : ");
+        JLabel lCounter = new JLabel("Valor del contador");
+        JLabel lProducerStarTime =new JLabel("Producer start time");
+        JLabel lProducerEndTime =new JLabel("Producer end time");
+        JLabel lCustomerStarTime =new JLabel("Customer start time");
+        JLabel lCustomerEndTime =new JLabel("Customer end time");
         JLabel lSumaCreacion=new JLabel("Tiempo total creacion hilos");
 
         JLabel lMediaCreacion=new JLabel ("Media creación hilos");
@@ -66,7 +66,8 @@ public class ResultsViewer extends JPanel implements Runnable {
 
         c.anchor = GridBagConstraints.NORTHWEST;
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 1;
+        c.insets=new Insets(7, 30, 7, 7); 
+        c.gridx = 0;
         c.gridy = 0;
         c.weightx = 1;
         c.weighty = 1;
