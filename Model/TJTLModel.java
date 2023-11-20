@@ -15,7 +15,7 @@ public class TJTLModel {
 
         for (int i = 0; i < customersThreads.length; i++) {
             long timeThreadC=System.currentTimeMillis();
-            customersThreads[i] = new Thread(new Customer(counter, consumerRandom, sliderConsumidor ));
+            customersThreads[i] = new Thread(new Consumer(counter, consumerRandom, sliderConsumidor ));
             timeThreadC=System.currentTimeMillis()-timeThreadC;
             this.counter.setThreadTime(timeThreadC+this.counter.getThreadTime());
         

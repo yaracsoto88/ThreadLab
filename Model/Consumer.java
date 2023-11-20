@@ -1,22 +1,20 @@
 package Model;
 import java.util.Random;
 
-public class Customer implements  Runnable{
-    ProtectedCounter counter;
+public class Consumer implements  Runnable{
+    Product product;
     Long startTime;
     Long endTime;
     boolean random;
     int sleepTime;
 
-    public Customer(ProtectedCounter counter, boolean random, int sleepTime) {
-        this.setCounter(counter);
+    public Consumer(Product product, boolean random, int sleepTime) {
+        this.product=product;
         this.random=random;
         this.sleepTime=sleepTime;
     }
 
-    public void setCounter(ProtectedCounter counter) {
-        this.counter = counter;
-    }
+
 
     @Override
     public void run() {
@@ -30,7 +28,7 @@ public class Customer implements  Runnable{
     private void consumirRandom(){
         this.startTime =  System.currentTimeMillis();
         for (int i = 0; i < 100; i++) {
-            this.counter.decrement();
+            this.product.consume();
             try {
                 Random rand = new Random();
                 int sleepTime= rand.nextInt(100);
@@ -40,13 +38,13 @@ public class Customer implements  Runnable{
             }
         }
         this.endTime = System.currentTimeMillis() - startTime;
-        this.counter.updateCustomersTimes(endTime,startTime);
+        // this.counter.updateCustomersTimes(endTime,startTime);
 
     }
     private void consumirValorEspecifico(){
         this.startTime =  System.currentTimeMillis();
         for (int i = 0; i < 100; i++) {
-            this.counter.decrement();
+            this.product.consume();
             try {
                 Thread.sleep(this.sleepTime); 
             } catch (InterruptedException e) {
@@ -54,7 +52,7 @@ public class Customer implements  Runnable{
             }
         }
         this.endTime = System.currentTimeMillis() - startTime;
-        this.counter.updateCustomersTimes(endTime,startTime);
+        // this.counter.updateCustomersTimes(endTime,startTime);
 
     }
 }
