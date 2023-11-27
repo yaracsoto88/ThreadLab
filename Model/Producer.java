@@ -20,45 +20,62 @@ public class Producer implements Runnable {
     @Override
     public void run() {
         this.labResults.hilosProcesandoProductor++;
-        if (this.labParameters.timeProduceRandom) {
-            producirRandom();
+        if (labParameters.preventNegativeStocks) {
+            producePreventNegative();
         } else {
-            producirValorEspecifico();
+            producir();
         }
+
         this.labResults.hilosFinalizadosProductor++;
     }
 
-    private void producirRandom() {
+    private void producePreventNegative() {
+        this.labResults.ProducerStartTime= System.currentTimeMillis();
+
+        for (int i = 0; i < labParameters.itemProductor; i++) {
+            synchronized (product) {
+                labResults.itemsProducidos++;
+                product.produce(true);
+                esperar();
+                product.notifyAll();
+            }  
+        }
+        this.labResults.ProducerEndTime = System.currentTimeMillis() - this.labResults.ProducerStartTime;
+    }
+
+    private void producir() {
         this.labResults.ProducerStartTime = System.currentTimeMillis();
         for (int i = 0; i < this.labParameters.itemProductor; i++) {
             this.labResults.itemsProducidos++;
             this.product.produce(labParameters.protectCriticalRegions);
-
-            try {
-                Random rand = new Random();
-                int sleepTime = rand.nextInt(100);
-                Thread.sleep(sleepTime); // Introduce una pausa de 100 milisegundos
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            esperar();
         }
         this.labResults.ProducerEndTime = System.currentTimeMillis() - this.labResults.ProducerStartTime;
-        // this.counter.updateProducersTimes(endTime, startTime);
 
     }
 
-    private void producirValorEspecifico() {
-        this.labResults.ProducerStartTime = System.currentTimeMillis();
-        for (int i = 0; i < this.labParameters.itemProductor; i++) {
-            this.labResults.itemsProducidos++;
-            this.product.produce(labParameters.protectCriticalRegions);
-            try {
-                Thread.sleep(this.labParameters.sliderProducer); // Introduce una pausa de 100 milisegundos
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+    private void esperarRandom() {
+        Random ran = new Random();
+        try {
+            Thread.sleep(ran.nextInt(100));
+        } catch (Exception e) {
+            System.err.println("errors");
         }
-        this.labResults.ProducerEndTime = System.currentTimeMillis() - this.labResults.ProducerStartTime;
+    }
 
+    private void esperarValorEspecifico() {
+        try {
+            Thread.sleep(labParameters.sliderProducer);
+        } catch (Exception e) {
+            System.err.println("errors");
+        }
+    }
+
+    private void esperar() {
+        if (this.labParameters.timeProduceRandom) {
+            esperarRandom();
+        } else {
+            esperarValorEspecifico();
+        }
     }
 }

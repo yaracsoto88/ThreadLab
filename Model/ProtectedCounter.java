@@ -17,7 +17,8 @@ public class ProtectedCounter {
         this.count++;
     }
     public synchronized void dec_syncro(){
-    this.count--;}
+    this.count--;
+    }
 
     public void setCount(int count) {
         this.count = count;

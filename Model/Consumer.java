@@ -16,49 +16,70 @@ public class Consumer implements Runnable {
 
     }
 
-
     @Override
     public void run() {
         this.labResults.hilosProcesandoConsumidor++;
-        if (this.labParameters.timeConsumeRandom) {
-            consumirRandom();
+        if (labParameters.preventNegativeStocks) {
+            consumerPreventNegative();
         } else {
-            consumirValorEspecifico();
+            consumir();
         }
+
         this.labResults.hilosFinalizadosConsumidor++;
     }
 
-    private void consumirRandom() {
+    private void consumerPreventNegative() {
+        this.labResults.CustomerStartTime = System.currentTimeMillis();
+
+        for (int i = 0; i < labParameters.itemConsumidor; i++) {
+            synchronized (product) {
+                while (product.getStock() <= 0) {
+                    try {
+                        product.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                product.consume(true);
+                esperar();
+            }  
+        }
+        this.labResults.CustomerEndTime = System.currentTimeMillis() - this.labResults.CustomerStartTime;
+    }
+
+    private void consumir() {
         this.labResults.CustomerStartTime = System.currentTimeMillis();
         for (int i = 0; i < this.labParameters.itemConsumidor; i++) {
             this.labResults.itemsConsumidos++;
             this.product.consume(labParameters.protectCriticalRegions);
-            try {
-                Random rand = new Random();
-                int sleepTime = rand.nextInt(100);
-                Thread.sleep(sleepTime); // Introduce una pausa de 100 milisegundos
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            esperar();
         }
         this.labResults.CustomerEndTime = System.currentTimeMillis() - this.labResults.CustomerStartTime;
-        // this.counter.updateCustomersTimes(endTime,startTime);
 
     }
 
-    private void consumirValorEspecifico() {
-        this.labResults.CustomerStartTime = System.currentTimeMillis();
-        for (int i = 0; i < this.labParameters.itemConsumidor; i++) {
-            this.labResults.itemsConsumidos++;
-            this.product.consume(labParameters.protectCriticalRegions);
-            try {
-                Thread.sleep(this.labParameters.sliderConsumer);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+    private void esperarRandom() {
+        Random ran = new Random();
+        try {
+            Thread.sleep(ran.nextInt(100));
+        } catch (Exception e) {
+            System.err.println("errors");
         }
-        this.labResults.CustomerEndTime = System.currentTimeMillis() - this.labResults.CustomerStartTime;
-        // this.counter.updateCustomersTimes(endTime,startTime);
+    }
 
+    private void esperarValorEspecifico() {
+        try {
+            Thread.sleep(labParameters.sliderConsumer);
+        } catch (Exception e) {
+            System.err.println("errors");
+        }
+    }
+
+    private void esperar() {
+        if (this.labParameters.timeConsumeRandom) {
+            esperarRandom();
+        } else {
+            esperarValorEspecifico();
+        }
     }
 }
