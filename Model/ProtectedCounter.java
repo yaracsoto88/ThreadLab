@@ -14,10 +14,10 @@ public class ProtectedCounter {
         this.count--;
     }
     public synchronized void inc_syncro(){
-
+        this.count++;
     }
-    public synchronized void dec_syncro(){}
-
+    public synchronized void dec_syncro(){
+    this.count--;}
 
     public void setCount(int count) {
         this.count = count;

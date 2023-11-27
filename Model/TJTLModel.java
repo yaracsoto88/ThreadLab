@@ -19,17 +19,13 @@ public class TJTLModel {
         // los pasamos desde el dto en vez de por parámetro
         int consumidors = labParameters.consumidores;
         int productors = labParameters.productores;
-        boolean consumerRandom = labParameters.timeConsumeRandom;
-        boolean producerRandom = labParameters.timeProduceRandom;
-        int sliderConsumidor = labParameters.sliderConsumer;
-        int sliderProductor = labParameters.sliderProducer;
 
         Thread[] customersThreads = new Thread[consumidors];
         Thread[] producersThreads = new Thread[productors];
 
         for (int i = 0; i < customersThreads.length; i++) {
             long timeThreadC = System.currentTimeMillis();
-            customersThreads[i] = new Thread(new Consumer(product, consumerRandom, sliderConsumidor));
+            customersThreads[i] = new Thread(new Consumer(product, labParameters, labResults));
             timeThreadC = System.currentTimeMillis() - timeThreadC;
             this.labResults.threadTime = timeThreadC + this.labResults.threadTime;
             // this.counter.setThreadTime(timeThreadC+this.counter.getThreadTime());
@@ -43,7 +39,7 @@ public class TJTLModel {
 
         for (int i = 0; i < producersThreads.length; i++) {
             long timeThreadP = System.currentTimeMillis();
-            producersThreads[i] = new Thread(new Producer(product, producerRandom, sliderProductor));
+            producersThreads[i] = new Thread(new Producer(product, labParameters, labResults));
             timeThreadP = System.currentTimeMillis() - timeThreadP;
             this.labResults.threadTime = timeThreadP + this.labResults.threadTime;
             // this.counter.setThreadTime(timeThreadP+this.counter.getThreadTime());
@@ -82,5 +78,7 @@ public class TJTLModel {
     public void setLabResults(LabResults labResults) {
         this.labResults = labResults;
     }
+
+
 
 }

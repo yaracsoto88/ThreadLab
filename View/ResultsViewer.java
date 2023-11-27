@@ -11,6 +11,7 @@ import javax.swing.border.Border;
 import DTO.LabResults;
 
 public class ResultsViewer extends JPanel implements Runnable {
+    JTextField contador;
     LabResults labResults;
 
     JTextField objectTimeThread;
@@ -30,7 +31,9 @@ public class ResultsViewer extends JPanel implements Runnable {
     JTextField finishedConsumers;
     JTextField pendingConsumers;
 
+
     public ResultsViewer(LabResults labResults) {
+        this.contador=new JTextField("0");
         this.labResults = labResults;
 
         this.objectTimeThread = new JTextField("0");
@@ -65,11 +68,12 @@ public class ResultsViewer extends JPanel implements Runnable {
 
     private void addComponentsToPane() {
         GridBagConstraints c = new GridBagConstraints();
+        JLabel lContador=new JLabel("Contador");
         JLabel lObjectTimeThread = new JLabel("Milisegundos en crear objetos Thread");
         JLabel lStartThread = new JLabel("Milisegundos en arrancar los hilos");
 
-        JLabel lConsumerTimeThread = new JLabel("Milisegundos en procesamiento de los hilos consumidores");
-        JLabel lProducerTimeThread = new JLabel("Milisegundos en procesamiento de los hilos productores");
+        JLabel lConsumerTimeThread = new JLabel("Media hilos");
+        JLabel lProducerTimeThread = new JLabel("Media del start de los hilos");
 
         JLabel lQuantityItemsProduced = new JLabel("Cantidad de items producidos por cada uno de los productos");
         JLabel lQuantityItemsConsumed = new JLabel("Cantidad de items consumidos por cada uno de los productos");
@@ -92,6 +96,8 @@ public class ResultsViewer extends JPanel implements Runnable {
         c.weighty = 1;
         c.gridheight = 1;
         c.gridwidth = 1;
+       
+
         c.gridx++;
         this.add(lObjectTimeThread, c);
         c.gridx++;
@@ -158,6 +164,12 @@ public class ResultsViewer extends JPanel implements Runnable {
         this.add(lPendingConsumers, c);
         c.gridx++;
         this.add(pendingConsumers, c);
+
+        c.gridx=1;
+        c.gridy++;
+        this.add(lContador,c);
+        c.gridx++;
+        this.add(contador,c);
 
     }
 
@@ -265,5 +277,14 @@ public class ResultsViewer extends JPanel implements Runnable {
     public void setPendingConsumers(JTextField pendingConsumers) {
         this.pendingConsumers = pendingConsumers;
     }
+
+    public JTextField getContador() {
+        return this.contador;
+    }
+
+    public void setContador(JTextField contador) {
+        this.contador = contador;
+    }
+
 
 }

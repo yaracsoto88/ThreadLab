@@ -1,35 +1,38 @@
 package Model;
 
 import java.util.Random;
+import DTO.LabParameters;
+import DTO.LabResults;
 
 public class Producer implements Runnable {
     Product product;
-    boolean random;
-    int sleepTime;
-    long startTime;
-    long endTime;
+    LabParameters labParameters;
+    LabResults labResults;
 
-    public Producer(Product product, boolean random, int sleepTime) {
+
+    public Producer(Product product, LabParameters labParameters, LabResults labResults) {
         this.product = product;
-        this.random=random;
-        this.sleepTime=sleepTime;
+        this.labParameters = labParameters;
+        this.labResults = labResults;
 
     }
 
     @Override
     public void run() {
-        if (this.random) {
+        this.labResults.hilosProcesandoProductor++;
+        if (this.labParameters.timeProduceRandom) {
             producirRandom();
         } else {
             producirValorEspecifico();
         }
-
+        this.labResults.hilosFinalizadosProductor++;
     }
 
     private void producirRandom() {
-        this.startTime = System.currentTimeMillis();
-        for (int i = 0; i < 100; i++) {
-            this.product.produce();
+        this.labResults.ProducerStartTime = System.currentTimeMillis();
+        for (int i = 0; i < this.labParameters.itemProductor; i++) {
+            this.labResults.itemsProducidos++;
+            this.product.produce(labParameters.protectCriticalRegions);
 
             try {
                 Random rand = new Random();
@@ -39,22 +42,23 @@ public class Producer implements Runnable {
                 e.printStackTrace();
             }
         }
-        this.endTime = System.currentTimeMillis() - startTime;
+        this.labResults.ProducerEndTime = System.currentTimeMillis() - this.labResults.ProducerStartTime;
         // this.counter.updateProducersTimes(endTime, startTime);
 
     }
 
     private void producirValorEspecifico() {
-        this.startTime = System.currentTimeMillis();
-        for (int i = 0; i < 100; i++) {
-            this.product.produce();
+        this.labResults.ProducerStartTime = System.currentTimeMillis();
+        for (int i = 0; i < this.labParameters.itemProductor; i++) {
+            this.labResults.itemsProducidos++;
+            this.product.produce(labParameters.protectCriticalRegions);
             try {
-                Thread.sleep(this.sleepTime); // Introduce una pausa de 100 milisegundos
+                Thread.sleep(this.labParameters.sliderProducer); // Introduce una pausa de 100 milisegundos
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        this.endTime = System.currentTimeMillis() - startTime;
+        this.labResults.ProducerEndTime = System.currentTimeMillis() - this.labResults.ProducerStartTime;
 
     }
 }
