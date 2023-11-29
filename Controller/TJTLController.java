@@ -68,4 +68,12 @@ public class TJTLController {
         this.labResults = labResults;
     }
 
+    public void reiniciar() {
+        this.labParameters=new LabParameters();
+        this.labResults=new LabResults();
+        this.tjtlVista.setLabParameters(this.labParameters);
+        this.tjtlVista.setLabResults(this.labResults);
+        this.model=new TJTLModel(this.labParameters, this.labResults);
+    }
+
 }
